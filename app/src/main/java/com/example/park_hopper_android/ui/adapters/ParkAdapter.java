@@ -6,10 +6,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.park_hopper_android.R;
 import com.example.park_hopper_android.data.models.Park;
+import com.example.park_hopper_android.ui.park.ParkDetailsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,12 @@ import java.util.List;
 public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.ParkViewHolder> {
 
     private List<Park> parks = new ArrayList<>();
+    private final FragmentActivity activity;
+
+    // Constructor to set activity reference
+    public ParkAdapter(FragmentActivity activity) {
+        this.activity = activity;
+    }
 
     public void setParks(List<Park> parks) {
         this.parks = parks;
@@ -36,6 +44,18 @@ public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.ParkViewHolder
         Park park = parks.get(position);
         holder.parkNameTextView.setText(park.getParkName());
         holder.parkLocationTextView.setText(park.getCountry());
+
+        holder.itemView.setOnClickListener(v -> {
+            // Open ParkDetailFragment
+            if (activity != null) {
+                ParkDetailsFragment fragment = ParkDetailsFragment.newInstance(park.getParkID());
+                activity.getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.nav_host_fragment_activity_main, fragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
     }
 
     @Override

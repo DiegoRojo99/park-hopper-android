@@ -9,6 +9,6 @@ import retrofit2.http.Path;
 public interface WaitingTimeApiService {
 
     @GET("entity/{parkId}/live")
-    Call<LiveData> getLiveData(@Path("id") String parkId);
-
+    Call<LiveData> getLiveData(@Path("parkId") String parkId);
 }
+

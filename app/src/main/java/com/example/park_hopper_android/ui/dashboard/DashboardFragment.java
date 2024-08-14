@@ -37,7 +37,7 @@ public class DashboardFragment extends Fragment {
 
         // Set up RecyclerView and adapter
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        parkAdapter = new ParkAdapter();
+        parkAdapter = new ParkAdapter(getActivity());
         binding.recyclerView.setAdapter(parkAdapter);
 
         // Get Parks data
@@ -59,6 +59,7 @@ public class DashboardFragment extends Fragment {
 
         return root;
     }
+
 
     @Override
     public void onDestroyView() {

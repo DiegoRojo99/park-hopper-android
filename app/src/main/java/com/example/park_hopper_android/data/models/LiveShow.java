@@ -4,21 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class LiveData {
-
-    private List<LiveAttraction> liveData;
-
-    public LiveData(List<LiveAttraction> liveData) {
-        this.liveData = liveData;
-    }
-
-    public List<LiveAttraction> getLiveData() {
-        return liveData;
-    }
-
-    public void setLiveData(List<LiveAttraction> liveData) {
-        this.liveData = liveData;
-    }
+public class LiveShow {
     @SerializedName("id")
     private String id;
 
@@ -39,9 +25,6 @@ public class LiveData {
 
     @SerializedName("lastUpdated")
     private String lastUpdated;
-
-    @SerializedName("queue")
-    private LiveQueue queue;
 
     @SerializedName("showtimes")
     private List<LiveShowtime> showtimes;
@@ -101,14 +84,6 @@ public class LiveData {
 
     public void setLastUpdated(String lastUpdated) {
         this.lastUpdated = lastUpdated;
-    }
-
-    public LiveQueue getQueue() {
-        return queue;
-    }
-
-    public void setQueue(LiveQueue queue) {
-        this.queue = queue;
     }
 
     public List<LiveShowtime> getShowtimes() {

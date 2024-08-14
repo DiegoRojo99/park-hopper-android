@@ -7,7 +7,7 @@ public class RetrofitInstance {
 
     // Base URLs for each API
     private static final String BASE_URL_BACKEND_API = "https://park-hopper-backend-8a49b628e08c.herokuapp.com/api/";
-    private static final String BASE_URL_WAITING_TIME_API = "https://api.themeparks.wiki/v1/api/";
+    private static final String BASE_URL_WAITING_TIME_API = "https://api.themeparks.wiki/v1/";
 
     // Retrofit instances
     private static Retrofit retrofitBackendApi;

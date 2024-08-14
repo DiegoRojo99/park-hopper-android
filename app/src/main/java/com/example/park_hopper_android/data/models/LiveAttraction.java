@@ -2,23 +2,11 @@ package com.example.park_hopper_android.data.models;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import java.io.Serializable;
 
-public class LiveData {
+public class LiveAttraction implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    private List<LiveAttraction> liveData;
-
-    public LiveData(List<LiveAttraction> liveData) {
-        this.liveData = liveData;
-    }
-
-    public List<LiveAttraction> getLiveData() {
-        return liveData;
-    }
-
-    public void setLiveData(List<LiveAttraction> liveData) {
-        this.liveData = liveData;
-    }
     @SerializedName("id")
     private String id;
 
@@ -42,9 +30,6 @@ public class LiveData {
 
     @SerializedName("queue")
     private LiveQueue queue;
-
-    @SerializedName("showtimes")
-    private List<LiveShowtime> showtimes;
 
     // Getters and Setters
     public String getId() {
@@ -111,11 +96,7 @@ public class LiveData {
         this.queue = queue;
     }
 
-    public List<LiveShowtime> getShowtimes() {
-        return showtimes;
-    }
-
-    public void setShowtimes(List<LiveShowtime> showtimes) {
-        this.showtimes = showtimes;
+    public int getWaitTime() {
+        return queue.getStandby().getWaitTime();
     }
 }
