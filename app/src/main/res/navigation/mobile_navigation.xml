@@ -20,15 +20,17 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.park_hopper_android.ui.dashboard.DashboardFragment"
-        android:label="Dashboard"></fragment>
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_dashboardFragment_to_parkDetailsFragment"
+            app:destination="@id/parkDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/parkDetailsFragment"
         android:name="com.example.park_hopper_android.ui.park.ParkDetailsFragment"
-        android:label="Park Details">
-        <argument
-            android:name="parkId"
-            app:argType="string" />
-    </fragment>
+        android:label="Park Details"
+        tools:layout="@layout/fragment_waiting_times" />
 
 </navigation>

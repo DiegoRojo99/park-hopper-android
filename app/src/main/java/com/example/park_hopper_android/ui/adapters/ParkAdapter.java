@@ -1,5 +1,6 @@
 package com.example.park_hopper_android.ui.adapters;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,11 +8,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.park_hopper_android.R;
 import com.example.park_hopper_android.data.models.Park;
-import com.example.park_hopper_android.ui.park.ParkDetailsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,17 +48,13 @@ public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.ParkViewHolder
         holder.parkLocationTextView.setText(park.getCountry());
 
         holder.itemView.setOnClickListener(v -> {
-            // Open ParkDetailFragment
-            if (activity != null) {
-                ParkDetailsFragment fragment = ParkDetailsFragment.newInstance(park.getParkID());
-                activity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.nav_host_fragment_activity_main, fragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
+            NavController navController = Navigation.findNavController((FragmentActivity) v.getContext(), R.id.nav_host_fragment_activity_main);
+            Bundle bundle = new Bundle();
+            bundle.putString("park_id", park.getParkID());
+            navController.navigate(R.id.action_dashboardFragment_to_parkDetailsFragment, bundle);
         });
-
     }
+
 
     @Override
     public int getItemCount() {
