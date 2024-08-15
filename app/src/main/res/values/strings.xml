@@ -6,4 +6,6 @@
     <string name="title_favorites">Favorites</string>
     <string name="no_wait_time">No info</string>
     <string name="wait_time_format">%d mins</string>
+    <string name="park_name">Park Name</string>
+    <string name="park_location">Park Location</string>
 </resources>

@@ -2,22 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/card_round_border"
     android:orientation="vertical"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="4dp"
     android:padding="16dp">
 
     <TextView
         android:id="@+id/park_name_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Park Name"
+        android:text="@string/park_name"
         android:textStyle="bold"
+        android:textColor="@color/black"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/park_location_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Park Location"
+        android:text="@string/park_location"
+        android:textColor="@color/black"
         android:textSize="14sp" />
 
 </LinearLayout>
