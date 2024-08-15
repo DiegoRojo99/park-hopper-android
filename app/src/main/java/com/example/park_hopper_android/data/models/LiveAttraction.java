@@ -97,6 +97,11 @@ public class LiveAttraction implements Serializable {
     }
 
     public int getWaitTime() {
-        return queue.getStandby().getWaitTime();
+        if (queue != null && queue.getStandby() != null) {
+            return queue.getStandby().getWaitTime();
+        } else {
+            return -1;
+        }
     }
+
 }

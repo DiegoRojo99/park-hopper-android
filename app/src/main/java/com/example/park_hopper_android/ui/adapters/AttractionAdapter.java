@@ -61,7 +61,7 @@ public class AttractionAdapter extends RecyclerView.Adapter<AttractionAdapter.At
             attractionStatusTextView.setText(attraction.getStatus());
 
             // Check if the attraction has a queue and a standby wait time
-            if (attraction.getQueue() != null && attraction.getQueue().getStandby() != null) {
+            if (attraction.getWaitTime() != -1) {
                 int waitTime = attraction.getQueue().getStandby().getWaitTime();
                 attractionWaitTimeTextView.setText(itemView.getContext().getString(R.string.wait_time_format, waitTime));
             } else {
