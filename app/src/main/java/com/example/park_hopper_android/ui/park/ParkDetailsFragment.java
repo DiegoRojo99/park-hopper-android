@@ -21,6 +21,7 @@ import com.example.park_hopper_android.data.models.LiveData;
 import com.example.park_hopper_android.ui.adapters.AttractionAdapter;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -67,8 +68,9 @@ public class ParkDetailsFragment extends Fragment {
             @Override
             public void onResponse(@NonNull Call<LiveData> call, @NonNull Response<LiveData> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    List<LiveAttraction> attractionsList = response.body().getLiveData();
-                    if (attractionsList != null) {
+                    List<LiveAttraction> entityList = response.body().getLiveData();
+                    if (entityList != null) {
+                        List<LiveAttraction> attractionsList = entityList.stream().filter(entity -> entity.getEntityType().equals("ATTRACTION")).sorted((a, b) -> Integer.compare(b.getWaitTime(), a.getWaitTime())).collect(Collectors.toList());
                         adapter = new AttractionAdapter(attractionsList, new AttractionAdapter.OnAttractionClickListener() {
                             @Override
                             public void onAttractionClick(LiveAttraction attraction) {
